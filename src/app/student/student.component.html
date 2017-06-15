@@ -1,0 +1,18 @@
+
+<h2>List of Students</h2><br/>
+<ul class="list-group">
+  <div *ngIf="students?.length <1 ">
+    No records found.
+  </div>
+  <li *ngFor="let student of students" class="list-group-item">
+    {{student.fname}} {{student.lname}}
+    <span> &nbsp; <app-student-deletion [student]="student" (onDelete)="onDelete($event)"></app-student-deletion></span>
+    <span> &nbsp; <button class="btn btn-xs btn-info" type="button" (click)="showEditForm(student)">Edit</button></span>
+  </li>
+</ul>
+<br/>
+<div *ngIf="showEdit==true">
+  <app-student-edit [student]="student" (onEdit)="onEdit($event)"></app-student-edit>
+</div>
+<!--<app-student-register (onAdd)="onAdd($event)"></app-student-register>-->
+

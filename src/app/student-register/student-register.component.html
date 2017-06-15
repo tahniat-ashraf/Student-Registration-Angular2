@@ -1,0 +1,46 @@
+<h2>Student Registration Form</h2>
+<form (ngSubmit)="register(registrationForm.value);registrationForm.reset()" #registrationForm="ngForm" enctype='multipart/form-data'>
+  First Name : <input type="text" ngModel name="fname" class="form-control" required maxlength="50"/>
+  Last Name : <input type="text" ngModel  name="lname" class="form-control" required  maxlength="50"/>
+  Student ID : <input type="text" ngModel  name="sid" class="form-control" required  maxlength="9"/>
+  NID : <input type="file" #fileInput name="nid" ngModel  class="form-control" required>
+  MAJOR : <select ngModel  class="form-control" name="major" required  maxlength="50">
+  <option *ngFor="let c of courses"
+  >{{c.name}}</option>
+</select><br/>
+  <!--<button type="submit" (click)="register()" class="btn btn-primary btn-small">Register</button>-->
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Register</button>
+  </div>
+</form>
+<br/>
+
+
+<app-modal>
+<div class="app-modal-header">
+<b>{{status}}</b>
+</div>
+<div class="app-modal-body">
+ <i> {{message}}</i>
+</div>
+<div class="app-modal-footer">
+<button type="button" class="btn btn-primary" (click)="onClick()">OK</button>
+</div>
+</app-modal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

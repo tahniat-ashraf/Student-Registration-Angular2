@@ -1,0 +1,98 @@
+
+<h2>Edit Student Form</h2>
+
+
+  <!--<form (ngSubmit)="edit()" #editForm="ngForm">-->
+    <!--First Name : <input type="text" [(ngModel)]="student.fname" name="student.fname" class="form-control" required maxlength="50"/>-->
+    <!--Last Name : <input type="text" [(ngModel)]="student.lname" name="student.lname" class="form-control" required  maxlength="50"/>-->
+    <!--Student ID <input type="text" [(ngModel)]="student.sid" name="student.sid" class="form-control"  required  maxlength="9"/>-->
+    <!--NID : <input type="text" [(ngModel)]="student.nid" name="student.nid" class="form-control" maxlength="255"/>-->
+    <!--MAJOR <select [(ngModel)]="major" class="form-control" name="student.major" required  maxlength="50">-->
+    <!--<option *ngFor="let c of courses"-->
+    <!--&gt;{{c.name}}</option>-->
+  <!--</select>-->
+    <!--&lt;!&ndash;<button type="submit" (click)="edit()" class="btn btn-primary btn-small">Edit</button>&ndash;&gt;-->
+    <!--<div class="form-group">-->
+    <!--<button type="submit" class="btn btn-default">Submit</button>-->
+    <!--</div>-->
+  <!--</form>-->
+
+
+<!--<div class="jumbotron">-->
+  <!--<h2>Data Driven (Reactive) Form</h2>-->
+  <!-- Right of the bat, we no longer declare a local variable but use the formGroup directive and set it the complexForm object we defined in the constructor. Throughout the form, we will reference the complexForm root object as can be seen in the submitForm function.-->
+  <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
+    <div class="form-group">
+      <label>ID</label>
+      <!-- Rather than set an ngModel, we use the formControl directive to sync our input to the complexForm object. Notice that we are also setting the attribute we wish the corresponding input to sync with. We no longer need the name attribute, but can optionally add it. -->
+      <input class="form-control" type="text"  [formControl]="complexForm.controls['id']" readonly="readonly">
+    </div>
+    <div class="form-group">
+      <label>First Name</label>
+      <!-- Rather than set an ngModel, we use the formControl directive to sync our input to the complexForm object. Notice that we are also setting the attribute we wish the corresponding input to sync with. We no longer need the name attribute, but can optionally add it. -->
+      <input class="form-control" type="text" placeholder="John" [formControl]="complexForm.controls['fname']">
+    </div>
+    <div class="form-group">
+    <label>Last Name</label>
+    <input class="form-control" type="text" placeholder="Doe" [formControl]="complexForm.controls['lname']">
+  </div>
+    <div class="form-group">
+      <label>Student ID</label>
+      <input class="form-control" type="text" placeholder="2016*****" [formControl]="complexForm.controls['sid']">
+    </div>
+    <div class="form-group">
+      <label>National ID</label>
+      <input class="form-control" type="text" placeholder="YOUR NATIONAL ID" [formControl]="complexForm.controls['nid']">
+    </div>
+    <div class="form-group">
+      <label>Major</label>
+      <select [formControl]="complexForm.controls['major']"  class="form-control">
+        <option *ngFor="let c of courses"
+                [selected]="c.name == student.major "
+        >{{c.name}}</option>
+      </select>
+    </div>
+    <!--<div class="form-group">-->
+      <!--<label>Major</label>-->
+      <!--&lt;!&ndash;<input class="form-control" type="text" placeholder="Doe" [formControl]="complexForm.controls['nid']">&ndash;&gt;-->
+      <!--<select [(ngModel)]="major" class="form-control" placeholder="Pick any" [formControl]="complexForm.controls['major']">-->
+        <!--<option *ngFor="let c of courses"-->
+        <!--&gt;{{c.name}}</option>-->
+      <!--</select>-->
+    <!--</div>-->
+    <div class="form-group">
+      <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+  </form>
+<!--</div>-->
+
+
+
+<!--<form (ngSubmit)="register2(registrationForm.value)" #registrationForm="ngForm">-->
+  <!--First Name : <input type="text" ngModel name="fname" class="form-control" required maxlength="50"/>-->
+  <!--Last Name : <input type="text" ngModel  name="lname" class="form-control" required  maxlength="50"/>-->
+  <!--Student ID : <input type="text" ngModel  name="sid" class="form-control" required  maxlength="9"/>-->
+  <!--NID : <input type="text" ngModel  name="nid" class="form-control" maxlength="255"/>-->
+  <!--MAJOR : <select ngModel  class="form-control" name="major" required  maxlength="50">-->
+  <!--<option *ngFor="let c of courses"-->
+          <!--[selected]="c.name == 'Cse'"-->
+  <!--&gt;{{c.name}}</option>-->
+<!--</select>-->
+  <!--&lt;!&ndash;<button type="submit" (click)="register()" class="btn btn-primary btn-small">Register</button>&ndash;&gt;-->
+  <!--<div class="form-group">-->
+    <!--<button type="submit" class="btn btn-default">Submit</button>-->
+  <!--</div>-->
+<!--</form>-->
+
+
+<app-modal>
+  <div class="app-modal-header">
+    <b>ERROR</b>
+  </div>
+  <div class="app-modal-body">
+    <i> An error occured while editing Student. Please contact support.</i>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-primary" (click)="mod.hide()">OK</button>
+  </div>
+</app-modal>
