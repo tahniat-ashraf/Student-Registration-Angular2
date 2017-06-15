@@ -4,4 +4,4 @@ Tools/ Technologies used :
 
 - Angular CLI (Angular 2)
 - Bootstrap
-- Spring Boot (Backend - Code not included here !)
+- Communicates with Spring Boot Backend API (Code not included here :D)
