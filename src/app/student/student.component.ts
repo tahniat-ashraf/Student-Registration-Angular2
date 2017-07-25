@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewContainerRef, ViewChild} from '@angular/core';
-import {StudentService} from "../student.service";
+import {StudentService} from '../student.service';
 import { Overlay } from 'angular2-modal';
 import { Modal } from 'angular2-modal/plugins/bootstrap';
-import {ModalComponent} from "../modal.component";
+import {ModalComponent} from '../modal.component';
 
 
 
@@ -21,8 +21,8 @@ export class StudentComponent implements OnInit {
   showEdit;
 
   constructor(private studentService: StudentService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
-    overlay.defaultViewContainer = vcRef;
-
+    // overlay.defaultViewContainer = vcRef;
+//  modal.overlay.defaultViewContainer = vcRef;
   }
 
   ngOnInit() {
@@ -47,8 +47,8 @@ export class StudentComponent implements OnInit {
 
   showEditForm(student){
     console.log('Entered :: showEditForm :: fname :: '+student.fname);
-    this.showEdit=true;
-    this.student=student;
+    this.showEdit = true;
+    this.student = student;
 
   }
 
@@ -63,7 +63,7 @@ export class StudentComponent implements OnInit {
 
 
   onEdit(edited: boolean) {
-   if(edited==true){
+   if(edited === true){
      this.modal.alert()
        .showClose(true)
        .title('Success')
@@ -73,7 +73,7 @@ export class StudentComponent implements OnInit {
        .open();
      this.findAll();
      console.log('making showEdit false ..');
-     this.showEdit=false;
+     this.showEdit = false;
    }
   }
 
